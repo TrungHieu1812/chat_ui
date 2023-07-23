@@ -54,6 +54,7 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
+                    style: const TextStyle(decoration: TextDecoration.none),
                     decoration: const InputDecoration(
                       hintText: "Search",
                       border: InputBorder.none,

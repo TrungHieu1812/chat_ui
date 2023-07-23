@@ -46,9 +46,12 @@ class ChatBottomSheet extends StatelessWidget {
             const Expanded(
               child: TextField(
                 keyboardType: TextInputType.multiline,
-                maxLines: null,
+                maxLines: 4,
+                minLines: 1,
                 style: TextStyle(
-                    color: Colors.black, decoration: TextDecoration.none),
+                  color: Colors.black,
+                  decoration: TextDecoration.none,
+                ),
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 10, vertical: 10),
