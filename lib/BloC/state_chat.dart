@@ -1,21 +1,15 @@
-import 'package:equatable/equatable.dart';
+import '../models/Message_model.dart';
 
-abstract class ChatState extends Equatable {
-  const ChatState();
+class ChatState {
+  final List<Message> messages;
+  final bool isBot;
 
-  @override
-  List<Object> get props => [];
-}
+  ChatState({required this.messages, required this.isBot});
 
-class InitialChatState extends ChatState {}
-
-class MessageSentState extends ChatState {}
-
-class MessageReceivedState extends ChatState {
-  final String message;
-
-  const MessageReceivedState({required this.message});
-
-  @override
-  List<Object> get props => [message];
+  factory ChatState.isBot(List<Message> messages) {
+    return ChatState(messages: messages, isBot: true);
+  }
+  factory ChatState.isPerson(List<Message> messages) {
+    return ChatState(messages: messages, isBot: false);
+  }
 }

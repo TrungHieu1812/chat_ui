@@ -1,43 +1,49 @@
+import 'package:chat_ui/models/Active_model.dart';
 import 'package:flutter/material.dart';
 
 class ActiveChats extends StatelessWidget {
-  const ActiveChats({super.key});
+  const ActiveChats({super.key, required this.activeData});
+
+  final Active_model activeData;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10, left: 2),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            for (int i = 0; i < 10; i++)
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                child: Container(
-                  width: 65,
-                  height: 65,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(35),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 10,
-                        offset: const Offset(0, 3),
+    return Container(
+      height: 100,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      child: Expanded(
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                width: 90,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.blue,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(activeData.url),
+                        radius: 28,
                       ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(35),
-                    child: Image.asset('assets/images/avatar.png'),
-                  ),
+                    ),
+                    Expanded(
+                        child: Padding(
+                      padding:
+                          const EdgeInsets.only(top: 16.0, left: 5, right: 5),
+                      child: Text(
+                        activeData.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.w600),
+                      ),
+                    ))
+                  ],
                 ),
-              ),
-          ],
-        ),
+              );
+            }),
       ),
     );
   }

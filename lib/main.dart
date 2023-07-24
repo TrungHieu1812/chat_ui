@@ -1,4 +1,3 @@
-import 'package:chat_ui/Pages/chat_page.dart';
 import 'package:flutter/material.dart';
 
 import 'Pages/HomePage.dart';
@@ -21,10 +20,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.blue,
         ),
       ),
-      routes: {
-        "/": (context) => const HomePage(),
-        "chatPage": (context) => const ChatPage(),
-      },
+      home: const HomePage(),
     );
   }
 }

@@ -1,7 +1,10 @@
+import 'package:chat_ui/models/Active_model.dart';
+import 'package:chat_ui/models/RecentChat_model.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/ActiveChats.dart';
 import '../Widgets/RecentChats.dart';
+import 'package:faker/faker.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -66,8 +69,20 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        const ActiveChats(),
-        const RecentChats(),
+        ActiveChats(
+          activeData: Active_model(
+            name: faker.person.name(),
+            url: faker.image.image(width: 50, height: 50, random: true),
+          ),
+        ),
+        RecentChats(
+          recentChat: RecentChat_model(
+            name: faker.person.name(),
+            image: faker.image.image(width: 50, height: 50, random: true),
+            content: faker.conference.name(),
+            time: faker.date.justTime(),
+          ),
+        ),
       ]),
     );
   }
